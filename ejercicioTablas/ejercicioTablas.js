@@ -1,39 +1,26 @@
-$(document).ready(function() {
-    // Añadir nueva fila
+$(document).ready(function(){
+
+    let i = 1;
+
+    //AGREGAR FILA
     $(document).on("click", "#addRow", function(){
-        let row = $("<tr></tr>");
-        $('#myTable thead th').each(function() {
-            row.append('<div class=\"fila\"><button class=\"removeRow\">Eliminar</button><td>Nuevo dato</td></div>');
-        });
-        $('#myTable tbody').append(row);
+        $("#table").each(function(){
+            $("#table tbody").append("<tr><td><p>Nuevo Datp</p><button id='btn-delete-row'>-Eliminar fila</button><button id='btn-delete-col'>Eliminar columna</button></td></tr>");
+        })
     })
 
-    //Eliminar Fila
-    $(document).on("click", ".removeRow", function(){
-        $(this).parent().remove();
+    //ELIMINAR FILA
+    $(document).on("click", "#btn-delete-row", function(){
+        $(this).parent().parent().remove();
     })
 
-    // Añadir nueva columna
-  
-
+    //AGREGAR COLUMNA
     $(document).on("click", "#addColumn", function(){
-        //Añadir ColumnaCabecera
-        $('#myTable thead tr').append('<th>Nueva Columna</th>');
-
-        // Añadir celda a cada fila existente
-        $('#myTable tbody tr').each(function() {
-            $(this).append('<td>Nuevo dato</td>');
-        });
+        $("#table").each(function(){
+            $("#table tr").append("<td><p>Nuevo dato</p><button id='btn-delete-row'>Eliminar fila</button><button id='btn-delete-col'>Eliminar columna</button></td>");
+        })
     })
 
-    // Eliminar última columna
-    $('#removeColumn').click(function() {
-        // Eliminar última columna en la cabecera
-        $('#myTable thead th:last-child').remove();
+    
 
-        // Eliminar última celda en cada fila
-        $('#myTable tbody tr').each(function() {
-            $(this).find('td:last-child').remove();
-        });
-    });
-});
+})
