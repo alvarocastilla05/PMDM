@@ -5,7 +5,7 @@ $(document).ready(function(){
     //AGREGAR FILA
     $(document).on("click", "#addRow", function(){
         $("#table").each(function(){
-            $("#table tbody").append("<tr><td><p>Nuevo Datp</p><button id='btn-delete-row'>-Eliminar fila</button><button id='btn-delete-col'>Eliminar columna</button></td></tr>");
+            $("#table tbody").append("<tr><td><p>Nuevo Dato</p><button id='btn-delete-row'>-Eliminar fila</button></td></tr>");
         })
     })
 
@@ -17,8 +17,13 @@ $(document).ready(function(){
     //AGREGAR COLUMNA
     $(document).on("click", "#addColumn", function(){
         $("#table").each(function(){
-            $("#table tr").append("<td><p>Nuevo dato</p><button id='btn-delete-row'>Eliminar fila</button><button id='btn-delete-col'>Eliminar columna</button></td>");
+            $("#table tr").append("<td><p>Nuevo dato</p><button id='btn-delete-row'>Eliminar fila</button></td>");
         })
+    })
+
+    //ELIMINAR COLUMNA
+    $(document).on("click", "#removeColumn", function(){
+        $("#table td:last-child").remove();
     })
 
     
