@@ -5,19 +5,19 @@ $(document).ready(function(){
     //AGREGAR FILA
     $(document).on("click", "#addRow", function(){
         $("#table").each(function(){
-            $("#table tbody").append("<tr><td><p>Nuevo Dato</p><button id='btn-delete-row'>-Eliminar fila</button></td></tr>");
+            $("#table tbody").append("<tr><td><p>Nuevo Dato</p><button class='btn-delete-row'>Eliminar fila</button></td></tr>");
         })
     })
 
     //ELIMINAR FILA
-    $(document).on("click", "#btn-delete-row", function(){
+    $(document).on("click", ".btn-delete-row", function(){
         $(this).parent().parent().remove();
     })
 
     //AGREGAR COLUMNA
     $(document).on("click", "#addColumn", function(){
         $("#table").each(function(){
-            $("#table tr").append("<td><p>Nuevo dato</p><button id='btn-delete-row'>Eliminar fila</button></td>");
+            $("#table tr").append("<td><p>Nuevo dato</p><button class='btn-delete-row'>Eliminar fila</button></td>");
         })
     })
 
