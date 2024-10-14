@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-
+  nombre = 'Testla';
+  tipo = 'automatic/manual';
+  precio = 299;
+  img = 'coche_1.ppg';
 }
