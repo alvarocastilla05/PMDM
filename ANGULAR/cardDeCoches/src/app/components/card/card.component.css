@@ -1,0 +1,26 @@
+img{
+   position: relative;
+   left: 50px;
+}
+button{
+    padding: 10px;
+    border: none;
+    
+    
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+
+button{
+    color: white;
+    border-radius: 20px;
+    
+}
