@@ -9,7 +9,7 @@ export class CalculadoraComponent {
   numero1: number;
   numero2: number;
   resultado: number;
-  operator = '';
+  operacion = '';
   calculo = '';
 
   constructor(){
@@ -19,7 +19,7 @@ export class CalculadoraComponent {
   }
 
   addNum(num:number){
-    if(this.operator == ''){
+    if(this.operacion == ''){
       this.numero1 = parseInt(this.numero1.toString() + num.toString());
       this.calculo += num.toString();
     }else{
@@ -39,21 +39,21 @@ export class CalculadoraComponent {
     this.numero1 = 0;
     this.numero2 = 0;
     this.resultado = 0;
-    this.operator = '';
+    this.operacion = '';
     this.calculo = '';
   }
 
   seleccionarOperador(op:string){
-    this.operator = op;
-    this.calculo += this.operator;
+    this.operacion = op;
+    this.calculo += this.operacion;
   }
 
   resolver(){
-    if(this.operator == '+'){
+    if(this.operacion == '+'){
       this.sumar();
         return this.resultado
     }
-    if(this.operator == '-'){
+    if(this.operacion == '-'){
       this.restar();
         return this.resultado
     }
