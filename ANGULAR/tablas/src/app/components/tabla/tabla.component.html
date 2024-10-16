@@ -1,3 +1,12 @@
+<div class="checkbox-container">
+    <mat-checkbox (change)="aniadirColumnaCheck('numAlumno', $event.checked)" [checked]="displayedColumns.includes('numAlumno')">Numero Alumno</mat-checkbox>
+    <mat-checkbox (change)="aniadirColumnaCheck('nombre', $event.checked)" [checked]="displayedColumns.includes('nombre')">Nombre</mat-checkbox>
+    <mat-checkbox (change)="aniadirColumnaCheck('apellido', $event.checked)" [checked]="displayedColumns.includes('apellido')">Apellidos</mat-checkbox>
+    <mat-checkbox (change)="aniadirColumnaCheck('nif', $event.checked)" [checked]="displayedColumns.includes('nif')">NIF</mat-checkbox>
+    <mat-checkbox (change)="aniadirColumnaCheck('edad', $event.checked)" [checked]="displayedColumns.includes('edad')">Edad</mat-checkbox>
+    <mat-checkbox (change)="aniadirColumnaCheck('cursoMatriculado', $event.checked)" [checked]="displayedColumns.includes('cursoMatriculado')">Curso</mat-checkbox>
+  </div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
     <ng-container matColumnDef="numAlumno">

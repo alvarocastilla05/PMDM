@@ -26,5 +26,21 @@ const ELEMENT_DATA: Students[] = [
 export class TablaComponent {
   displayedColumns: string[] = ['numAlumno', 'nombre', 'apellido', 'nif', 'edad', 'cursoMatriculado'];
   dataSource = ELEMENT_DATA;
+
+
+  
+  aniadirColumnaCheck(columna: string, boton: boolean) {
+    if (boton) {
+      this.displayedColumns.push(columna);
+    } else {
+      this.displayedColumns = this.displayedColumns.filter(col => col !== columna);
+    }
+    
+    
+
+
+  }
+
+
 }
 
