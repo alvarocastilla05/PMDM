@@ -19,7 +19,7 @@
             <div class="card card-body">
                 <mat-form-field>
                     <mat-label>Enter your email</mat-label>
-                    <input matInput placeholder="pat@example.com" [(ngModel)]="email" (blur)="updateErrorMessage()"
+                    <input matInput placeholder="pat@example.com" [formControl]="email" (blur)="updateErrorMessage()"
                         required />
                     @if (email.invalid) {
                     <mat-error>{{errorMessage()}}</mat-error>

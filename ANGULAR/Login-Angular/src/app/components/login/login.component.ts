@@ -43,7 +43,7 @@ export class LoginComponent {
 }
 
   enviar() {
-    console.log('Email:', this.email);
+    console.log('Email:', this.email.value);
     console.log('Contraseña:', this.contrasenia);
   }
 
