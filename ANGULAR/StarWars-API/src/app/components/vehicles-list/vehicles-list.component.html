@@ -1,28 +1,28 @@
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
+        <!-- Bucle para mostrar los vehículos -->
         @for (item of listadoVehiculos; track item) {
-        <div class="col-md-3 col-12 m-3">
-            <div class="card" style="width: 18rem;">
-                <img [src]="" class="card-img-top" [alt]="item.name">
-                <div class="card-body">
+        <div class="col-md-3 col-12 d-flex align-items-stretch m-3">
+            <div class="card" style="width: 100%;">
+                <img [src]="getVehicleImgUrl(item.url)" class="card-img-top img-fluid" [alt]="item.name" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{item.name}}</h5>
-                    <p class="card-text">Model: {{item.model}} <br>
-                        Pasajeros:{{item.passengers}} <br>
-                        Manurfacturer: {{item.manufacturer}} <br>
+                    <p class="card-text">
+                        Model: {{item.model}} <br>
+                        Pasajeros: {{item.passengers}} <br>
+                        Manufacturer: {{item.manufacturer}} <br>
                         Cost in credits: {{item.cost_in_credits}} <br>
-                        Length: {{item.length}} <br>    
+                        Length: {{item.length}} <br>
                         Max atmosphering speed: {{item.max_atmosphering_speed}} <br>
                         Crew: {{item.crew}} <br>
                         Cargo capacity: {{item.cargo_capacity}} <br>
                         Consumables: {{item.consumables}} <br>
-                        Vehicle class: {{item.vehicle_class}} <br>
-                        
-
+                        Vehicle class: {{item.vehicle_class}}
                     </p>
+                    <a href="#" class="btn btn-primary mt-auto">More Info</a>
                 </div>
             </div>
         </div>
         }
-
     </div>
 </div>

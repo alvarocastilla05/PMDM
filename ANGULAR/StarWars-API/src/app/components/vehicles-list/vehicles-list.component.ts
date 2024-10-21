@@ -9,6 +9,7 @@ import { VehicleService } from '../../services/vehicle.service';
 })
 export class VehiclesListComponent implements OnInit {
   listadoVehiculos: Vehicle[] = [];
+  img: string = 'https://starwars-visualguide.com/assets/img/vehicles/';
 
   constructor(private vehicleService: VehicleService) {}
 
@@ -16,6 +17,12 @@ export class VehiclesListComponent implements OnInit {
     this.vehicleService.getVehicles().subscribe(respuesta => {
       this.listadoVehiculos = respuesta.results;
     });
+  }
+
+  getVehicleImgUrl(url: string): string {
+    let id = url.split('/')[5];
+
+    return `${this.img}${id}.jpg`;
   }
 }
 
