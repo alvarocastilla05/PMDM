@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        @for (item of characterList; track item.id) {
+
+        <div class="col-md-3 col-12 m-3">
+            <div class="card" style="width: 18rem;">
+                <img [src]="item.image" class="card-img-top" [alt]="item.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item.species}} - {{item.status}}<br>
+                        <i class="bi bi-globe-americas "></i>{{item.origin.name}}<br>
+                        <i class="bi bi-geo-alt-fill"></i>{{item.location.name}}
+                    </p>
+                    <a href="#" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+
+
+        }
+    </div>
+
+</div>
