@@ -25,4 +25,8 @@ export class PeopleListComponent implements OnInit {
     return  `${this.img}${id}.jpg`;
   }
 
+  getOnePeople(id: number): void {
+    
+  }
+
 }
