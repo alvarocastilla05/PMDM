@@ -1,19 +1,8 @@
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center mt-5">
         <!-- Bucle para mostrar los vehículos -->
         @for (item of listadoPersonas; track item) {
-        <div class="col-md-3 col-12 d-flex align-items-stretch m-3">
-            <div class="card" style="width: 100%;">
-                <img [src]="getPeopleImg(item.url)" class="card-img-top img-fluid" [alt]="item.name" style="height: 500px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{item.name}}</h5>
-                    <p class="card-text">
-                        
-                    </p>
-                    <a href="#" class="btn btn-primary mt-auto">More Info</a>
-                </div>
-            </div>
-        </div>
+        <app-people-item [personId]="getOnePeople(item.url)" style="width: fit-content"></app-people-item>
         }
     </div>
 </div>

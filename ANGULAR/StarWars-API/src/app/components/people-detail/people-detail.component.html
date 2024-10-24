@@ -1,0 +1,28 @@
+
+<div class="container w-100 d-flex flex-wrap justify-content-around mt-5 mb-5 pb-4"
+style="margin-top: 130px !important;">
+
+<!--Imagen y descripción-->
+<div class="container w-50 d-flex justify-content-center flex-wrap">
+    <div id="imagen" class="w-100 d-flex justify-content-center">
+        <img id="imagen" [src]="getPeopleImg(person!.url)" style="width: 400px;" [alt]="person!.name">
+    </div>
+    
+</div>
+
+<!--Información-->
+<div class="container w-50 d-flex justify-content-center flex-wrap">
+    <!--Nombre y número-->
+    <div id="nombreNumero" class="container w-100 d-flex flex-wrap justify-content-between jockey-one-regular"
+        style="height: 15%">
+        <h1 id="nombre" class="text-dark text-uppercase me-5 tipografia" style="font-size: 60px;">{{person!.name}}</h1>
+    </div>
+    <div id="descripcion" class="w-100">
+        <h3 id="descripcion" class="text-white m-3 jockey-one-regular bg-dark">
+            {{person!.eye_color}}<br>
+            {{person!.eye_color}}<br>
+            {{person!.gender}}<br>
+        </h3>
+    </div>
+</div>
+</div>

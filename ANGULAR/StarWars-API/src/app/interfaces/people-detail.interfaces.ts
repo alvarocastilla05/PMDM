@@ -1,4 +1,4 @@
-export interface PeopleDetailRepsonse {
+export interface PeopleDetailResponse {
     name: string
     height: string
     mass: string

@@ -10,7 +10,6 @@ import { PeopleService } from '../../services/people.service';
 export class PeopleListComponent implements OnInit {
   listadoPersonas: People[] = [];
 
-  img = 'https://starwars-visualguide.com/assets/img/characters/';
 
   constructor(private peopleService: PeopleService) {}
 
@@ -22,11 +21,11 @@ export class PeopleListComponent implements OnInit {
 
   getPeopleImg(url: string): string {
     const id = url.split('/')[5];
-    return  `${this.img}${id}.jpg`;
+    return  `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
   }
 
-  getOnePeople(id: number): void {
-    
+  getOnePeople(url: string): number {
+    return parseInt(url.split('/')[5]);
   }
 
 }
