@@ -1,1 +1,24 @@
 
+@for (pokemon of pokemonSeleccionado; track pokemon.name) {
+    <div class="d-flex justify-content-center">
+        <div class="card mb-3" style="max-width: 500px; width: 500px;">
+            <div class="row g-0">
+                <div class="col-md-4" style="width: 150px;">
+                    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' 
+                                     + pokemon.url.split('/')[pokemon.url.split('/').length - 2] + '.png'"
+                        class="card-img-left img-fluid rounded-start">
+                </div>
+                <div class="col-md-8" style="width: 350px;">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ pokemon.name }}</h2>
+                        <p class="card-text">HP:</p>
+                        <button class="btn btn-primary mt-3" (click)="atacar(pokemonSeleccionado.indexOf(pokemon))"
+                            [disabled]="(turno1 && pokemon.name !== pokemonSeleccionado[0].name) || (!turno1 && pokemon.name !== pokemonSeleccionado[1].name)">
+                            Atacar  
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
