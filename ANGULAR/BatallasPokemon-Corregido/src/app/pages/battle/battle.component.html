@@ -1,15 +1,33 @@
-<div class="container fluid">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center vh-100">
 
-        <app-pokemon 
-            [pokemonId]="pokemonPlayer1Id" 
-            [life]="lifePokemon1"
-            [isMyTurn]="pokemonTurn == 1"
-            (onAttackDone)="applyDamage($event)"></app-pokemon>
-        <app-pokemon 
-            [pokemonId]="pokemonPlayer2Id" 
-            [life]="lifePokemon2"
-            [isMyTurn]="pokemonTurn == 2"
-            (onAttackDone)="applyDamage($event)"></app-pokemon>
+        <div class="col-md-4 d-flex justify-content-center">
+            <app-pokemon 
+                [pokemonId]="pokemonPlayer1Id" 
+                [life]="lifePokemon1" 
+                [isMyTurn]="pokemonTurn == 1"
+                (onAttackDone)="applyDamage($event)">
+            </app-pokemon>
+        </div>
+
+        <!-- Texto VS -->
+        <div class="col-md-2 text-center">
+            <h1 class="display-4 fw-bold">VS</h1>
+        </div>
+
+        <div class="col-md-4 d-flex justify-content-center">
+            <app-pokemon 
+                [pokemonId]="pokemonPlayer2Id" 
+                [life]="lifePokemon2" 
+                [isMyTurn]="pokemonTurn == 2"
+                (onAttackDone)="applyDamage($event)">
+            </app-pokemon>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-2 text-center">
+            <button class="btn btn-primary mt-2" (click)="reiniciarBatalla()">Reiniciar Batalla</button>
+        </div>
     </div>
 </div>

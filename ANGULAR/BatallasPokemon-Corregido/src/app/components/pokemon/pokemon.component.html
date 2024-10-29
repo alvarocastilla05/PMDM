@@ -1,20 +1,35 @@
-<main lottie [options]="options"></main>
+<div class="card shadow-lg" style="width: 18rem;">
+    <div class="card-body text-center">
+        <div class="position-relative mb-3" style="height: 180px;"> <!-- Contenedor fijo para imagen/animación -->
+            @if (finalizarPelea()) {
+                <ng-lottie [options]="options2" style="height: 100%; width: 100%;"></ng-lottie>
+            } @else {
+                @if (showAnimation1) {
+                    <ng-lottie [options]="options1" style="height: 100%; width: 100%;"></ng-lottie>
+                } @else {
+                    <img [src]="pokemon?.sprites?.front_default" class="img-fluid h-100 rounded" [alt]="pokemon?.name">
+                }
+            }
+        </div>
 
-<div class="card" style="width: 18rem;">
-    <img [src]="pokemon?.sprites?.front_default" class="card-img-top" [alt]="pokemon?.name">
-    <div class="card-body">
-        <h5 class="card-title">{{pokemon?.name}}</h5>
-        <p class="card-text">
-            <strong>Height:</strong> {{pokemon?.height}}<br>
+        <h5 class="card-title mt-3">{{pokemon?.name | titlecase}}</h5>
+        <p class="card-text text-muted">
+            <strong>Height:</strong> {{pokemon?.height}} <br>
             <strong>Weight:</strong> {{pokemon?.weight}}
-            <ngb-progressbar class="mb-3" type="warning" [value]="life" [striped]="true" [type]="getProgressColor()"
-                [animated]="true"><i>{{life}}</i></ngb-progressbar>
         </p>
-        @if (isMyTurn) {
-            <a (click)="doAttack()" class="btn btn-danger">Attack</a>
-        }@else {
-            <a class="btn btn-secondary" disabled>Waiting</a>
-        }
         
+        <ngb-progressbar class="mb-3" [type]="getProgressColor()" [value]="life" [striped]="true" [animated]="true">
+            <span>{{life}}</span>
+        </ngb-progressbar>
+        
+        @if (isMyTurn) {
+            @if (life <= 0) {
+                <p class="text-danger">You lose</p>
+            } @else {
+                <button (click)="doAttack()" class="btn btn-danger w-100">Attack</button>
+            }
+        } @else {
+            <button class="btn btn-secondary w-100" disabled>Waiting</button>
+        }
     </div>
 </div>

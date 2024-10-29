@@ -9,7 +9,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { BattleComponent } from './pages/battle/battle.component';
 import { LottieComponent, LottieDirective, provideLottieOptions } from 'ngx-lottie';
-import player from 'lottie-web';
+
 
 @NgModule({
   declarations: [
@@ -21,8 +21,7 @@ import player from 'lottie-web';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    LottieComponent,
-    LottieDirective
+    LottieComponent
   ],
   providers: [
     provideAnimationsAsync(),
