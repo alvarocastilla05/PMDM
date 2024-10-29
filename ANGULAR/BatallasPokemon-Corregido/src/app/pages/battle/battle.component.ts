@@ -19,6 +19,7 @@ export class BattleComponent {
       // Apply damage to pokemon 2
       this.lifePokemon2 -= damage;
       this.pokemonTurn = 2;
+      
     } else {
       // Apply damage to pokemon 1
       this.lifePokemon1 -= damage;
