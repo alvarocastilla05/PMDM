@@ -1,0 +1,20 @@
+<main lottie [options]="options"></main>
+
+<div class="card" style="width: 18rem;">
+    <img [src]="pokemon?.sprites?.front_default" class="card-img-top" [alt]="pokemon?.name">
+    <div class="card-body">
+        <h5 class="card-title">{{pokemon?.name}}</h5>
+        <p class="card-text">
+            <strong>Height:</strong> {{pokemon?.height}}<br>
+            <strong>Weight:</strong> {{pokemon?.weight}}
+            <ngb-progressbar class="mb-3" type="warning" [value]="life" [striped]="true" [type]="getProgressColor()"
+                [animated]="true"><i>{{life}}</i></ngb-progressbar>
+        </p>
+        @if (isMyTurn) {
+            <a (click)="doAttack()" class="btn btn-danger">Attack</a>
+        }@else {
+            <a class="btn btn-secondary" disabled>Waiting</a>
+        }
+        
+    </div>
+</div>

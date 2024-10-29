@@ -11,11 +11,12 @@
                 <div class="col-md-8" style="width: 350px;">
                     <div class="card-body">
                         <h2 class="card-title">{{ pokemon.name }}</h2>
-                        <p class="card-text">HP:</p>
-                        <button class="btn btn-primary mt-3" (click)="atacar(pokemonSeleccionado.indexOf(pokemon))"
+                        <p class="card-text">PS:</p>
+                        <!--<button class="btn btn-primary mt-3" (click)="atacar(pokemonSeleccionado.indexOf(pokemon))"
                             [disabled]="(turno1 && pokemon.name !== pokemonSeleccionado[0].name) || (!turno1 && pokemon.name !== pokemonSeleccionado[1].name)">
                             Atacar  
-                        </button>
+                        </button>-->
+                        <button class="btn btn-danger mt-3">Atacar</button>
                     </div>
                 </div>
             </div>

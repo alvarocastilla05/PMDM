@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonsService } from '../../services/pokemons.service';
 import { PokemonBattleResponse, PokemonList } from '../../models/pokemon-battle.interfaces';
+import { PokemonResponse } from '../../models/pokemon-response.interfaces';
 
 @Component({
   selector: 'app-pokemon-battle',
@@ -14,6 +15,7 @@ export class PokemonBattleComponent implements OnInit {
   progress: number[] = [];
   turno1: boolean = true;
   mensajeGanador: string = '';
+  pokemonDetails: PokemonResponse | undefined;
 
   constructor(private pokemonService: PokemonsService) { }
 
@@ -36,7 +38,7 @@ export class PokemonBattleComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  atacar(index: number) {
+  /*atacar(index: number) {
     if ((this.turno1 && index === 0) || (!this.turno1 && index === 1)) {
       if (this.progress[index] > 0) {
         this.progress[index] = Math.max(0, this.progress[index] - this.generarRandom(5, 51));
@@ -47,7 +49,7 @@ export class PokemonBattleComponent implements OnInit {
       }
       this.turno1 = !this.turno1;
     }
-  }
+  }*/
 
 
 
