@@ -9,13 +9,15 @@ import { provideHttpClient } from '@angular/common/http';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { BattleComponent } from './pages/battle/battle.component';
 import { LottieComponent, LottieDirective, provideLottieOptions } from 'ngx-lottie';
+import { ImgPokemonPipe } from './pipes/img-pokemon.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
-    BattleComponent
+    BattleComponent,
+    ImgPokemonPipe
   ],
   imports: [
     BrowserModule,
