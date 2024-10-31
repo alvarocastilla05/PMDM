@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>ADD NEW USER</h1>
+        </div>
+    </div>
+    <div [hidden]="submitted">
+        <form 
+            action="" 
+            method="post"
+            (ngSubmit)="addUser()"
+            #userForm="ngForm"
+            >
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="nombre" 
+                        required 
+                        [(ngModel)]="user.nombre" 
+                        #name="ngModel"
+                        >
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        Name is required
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="apellidos">Apellidos</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="apellidos" 
+                        required 
+                        [(ngModel)]="user.apellidos"  
+                        #apellidos="ngModel"
+                        >
+                    <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
+                        Apellidos is required
+                    </div>
+                </div>
+
+            </div>
+            </form>
+    </div>
+</div>
