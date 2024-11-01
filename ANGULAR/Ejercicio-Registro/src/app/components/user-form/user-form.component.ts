@@ -8,6 +8,7 @@ import { UserDto } from '../../models/user-dto';
 })
 export class UserFormComponent {
   conociminetoPagina = ['Google', 'Amigo', 'Profesor', 'Otro'];
+  sexos = ['Hombre', 'Mujer', 'Otro'];
   user = new UserDto('Alvaro', 'Castilla Cano', '12345678A', 'alvarocasno06@gmail.com', '675314070', 'Hombre', 'Si', '123456', '123456');
   submitted = false;
 
