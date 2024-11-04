@@ -10,45 +10,53 @@
                 <div class="col-12 mb-3">
                     <label for="name" class="form-label">Nombre *</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required
-                        [(ngModel)]="user.nombre" #name="ngModel"/>
-                        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Nombre Requerido</div>
+                        [(ngModel)]="user.nombre" #name="ngModel" />
+                    <div [hidden]="name.valid" class="alert alert-danger">Nombre Requerido</div>
                 </div>
                 <div class="col-12 mb-3">
                     <label for="surname" class="form-label">Apellidos *</label>
                     <input type="text" class="form-control" id="surname" name="surname" placeholder="Apellidos" required
-                        [(ngModel)]="user.apellidos" #apellidos="ngModel"/>
-                    <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">Apellidos Requeridos</div>
+                        [(ngModel)]="user.apellidos" #apellidos="ngModel" />
+                    <div [hidden]="apellidos.valid" class="alert alert-danger">Apellidos Requeridos</div>
                 </div>
                 <div class="col-12 mb-3">
                     <label for="email" class="form-label">Email *</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email" required
-                        [(ngModel)]="user.email" #email="ngModel"/>
-                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email Requerido</div>
+                        [(ngModel)]="user.email" #email="ngModel" />
+                    <div [hidden]="email.valid" class="alert alert-danger">Email Requerido</div>
                 </div>
                 <div class="col-12 mb-3">
-                    <label for="course" class="form-label">Course *</label>
+                    <label for="course" class="form-label">¿Cómo nos conoció? *</label>
 
-                    <select class="form-select" aria-label="Default select example" name="conocimientoPagina" id="conocimientoPagina" required
-                        [(ngModel)]="user.conocimientoPagina" #cono="ngModel">
-                        <option value="" selected="selected">-Escoja una</option>
+                    <select class="form-select" aria-label="Default select example" name="conocimientoPagina"
+                        id="conocimientoPagina" required [(ngModel)]="user.conocimientoPagina" #cono="ngModel">
+                        <option value="" selected="selected">-Escoja una -</option>
                         @for(item of conociminetoPagina; track item){
                         <option [value]="item">{{ item }}</option>
                         }
                     </select>
-                    <div [hidden]="cono.valid || cono.pristine" class="alert alert-danger">Conocimiento de la página Requerido</div>
+                    <div [hidden]="cono.valid" class="alert alert-danger">Conocimiento de la página Requerido</div>
                 </div>
                 <div class="col-6 mb-3">
                     <label for="phone" class="form-label">Número de teléfono *</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number" required
-                        [(ngModel)]="user.telefono" #telefono="ngModel"/>
-                    <div [hidden]="telefono.valid || telefono.pristine" class="alert alert-danger">Número de teléfono Requerido</div>
+                        [(ngModel)]="user.telefono" #telefono="ngModel" />
+                    <div [hidden]="telefono.valid" class="alert alert-danger">Número de teléfono Requerido</div>
                 </div>
-                <div class="col-6 mb-3">
-                    <label for="nif" class="form-label">NIF</label>
+                <div class="col-4 mb-3">
+                    <label for="nif" class="form-label">NIF (Sin letra)</label>
                     <input type="text" class="form-control" id="nif" name="nif" placeholder="NIF" required
-                        [(ngModel)]="user.nif" #nif="ngModel"/>
-                    <div [hidden]="nif.valid || nif.pristine" class="alert alert-danger">NIF Requerido</div>
+                        [(ngModel)]="user.nif" #nif="ngModel" />
+                    
+                    <div [hidden]="nif.valid" class="alert alert-danger">NIF Requerido</div>
                 </div>
+                <div class="col-2 mb-3">
+                    <label for="nifLetra" class="form-label">Letra</label>
+                    <input type="text" class="form-label ms-2 text-uppercase " name="nifLetra" id="nifLetra"
+                        readonly [value]="validarLetraDni(user.nif)" style="width: 20px;">
+                </div>
+
+
 
                 <div class="col-12 mb-3">
                     <label for="course" class="form-label">Sexo *</label>
@@ -65,16 +73,24 @@
 
                 <div class="col 6 mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required
-                        [(ngModel)]="user.contrasenia" #contrasenia="ngModel">
-                    <div [hidden]="contrasenia.valid || contrasenia.pristine" class="alert alert-danger">Contraseña Requerida</div>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña"
+                        required [(ngModel)]="user.contrasenia" #contrasenia="ngModel">
+                    <div [hidden]="contrasenia.valid" class="alert alert-danger">Contraseña Requerida</div>
                 </div>
 
                 <div class="col 6 mb-3">
                     <label for="confirmPassword" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Repetir Contraseña" required
-                        [(ngModel)]="user.contrasenia2">
+                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                        placeholder="Repetir Contraseña" required [(ngModel)]="user.contrasenia2">
                 </div>
+
+                @if (comprobarContrasena() == false) {
+                <div class="col-12">
+                    <div class="alert alert-danger" role="alert">
+                        Las contraseñas no coinciden
+                    </div>
+                </div>
+                }
 
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary" style="width: 100%" [disabled]="!userForm.form.valid">
