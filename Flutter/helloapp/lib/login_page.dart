@@ -10,17 +10,43 @@ class LoginPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add)),
-      body:  Column(
-        children: [
-          SizedBox(
+      body:  Container(
+        color: Colors.yellow,
+        child: SizedBox(
           width: double.infinity,
-          child: ElevatedButton(
-            onPressed: () {}, 
-            child: const Text('Login')
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {}, 
+                child: const Text('Login')
+              ),
+              const Divider(
+                height: 100,
+                //color: Colors.yellow,
+              ),
+              SizedBox(
+                height: 100,
+                width: 100,
+                child: Stack(
+                  children:[ Container(
+                    color: Colors.red,
+                    child: const Center(child: Text('hola', 
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold))),
+                  ),
+            ])),
+              Container(
+                margin: const EdgeInsets.only(bottom: 50),
+                child: const Text('Registro')),
+              const Text('¿Olvidaste contraseña?'),
+              
+
+            ],
           ),
-          ),
-          const Text('Estamos en el login page'),
-        ],
+        ),
       ));
   }
 }
