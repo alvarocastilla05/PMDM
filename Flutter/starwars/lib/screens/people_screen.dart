@@ -18,26 +18,25 @@ class _PeopleScreenState extends State<PeopleScreen> {
     peopleResponse = getPeople();
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('People'),
       ),
-      body: _buildPeopleList(),
-    );
-    FutureBuilder<PeopleResponse>(
-      future: peopleResponse,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return _buildPeopleList(snapshot.data!);
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
+      body: FutureBuilder<PeopleResponse>(
+        future: peopleResponse,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return _buildPeopleList(snapshot.data!);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
 
-        // By default, show a loading spinner.
-        return const CircularProgressIndicator();
-      },
+          // By default, show a loading spinner.
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
 
