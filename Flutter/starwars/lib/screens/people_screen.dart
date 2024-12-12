@@ -33,7 +33,15 @@ class _PeopleScreenState extends State<PeopleScreen> {
             future: peopleResponse,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return _buildPeopleList(snapshot.data!);
+                return Column(
+                  children: [
+                    Text('Character List', style: TextStyle(color: Colors.yellow[600],fontFamily: 'StarJedi', fontSize: 20)),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 300,
+                      child: _buildPeopleList(snapshot.data!)),
+                  ],
+                );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
@@ -57,14 +65,14 @@ class _PeopleScreenState extends State<PeopleScreen> {
 
  Widget _buildPeopleList(PeopleResponse peopleResponse) {
   return Center(
-    child: Container(
+    child: SizedBox(
       width: 300,
       child: ListView.builder(
         itemCount: peopleResponse.results!.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Stack(
@@ -84,9 +92,10 @@ class _PeopleScreenState extends State<PeopleScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                         child: Text(
                           peopleResponse.results![index].name!,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: Colors.yellow[600],
                             fontSize: 12,
+                            fontFamily: 'StarJedi',
                           ),
                         ),
                       ),
