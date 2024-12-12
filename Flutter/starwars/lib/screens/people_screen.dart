@@ -18,26 +18,31 @@ class _PeopleScreenState extends State<PeopleScreen> {
     peopleResponse = getPeople();
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('People'),
-      ),
-      body: FutureBuilder<PeopleResponse>(
-        future: peopleResponse,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return _buildPeopleList(snapshot.data!);
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
+        appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: Image.network(
+              'https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-3-1.png',
+              width: 100,
+            )),
+        body: Container(
+          color: Colors.black,
+          child: FutureBuilder<PeopleResponse>(
+            future: peopleResponse,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return _buildPeopleList(snapshot.data!);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
 
-          // By default, show a loading spinner.
-          return const CircularProgressIndicator();
-        },
-      ),
-    );
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
+          ),
+        ));
   }
 
   Future<PeopleResponse> getPeople() async {
@@ -50,13 +55,50 @@ class _PeopleScreenState extends State<PeopleScreen> {
     }
   }
 
-  Widget _buildPeopleList(PeopleResponse peopleResponse) {
-    return ListView.builder(
+ Widget _buildPeopleList(PeopleResponse peopleResponse) {
+  return Center(
+    child: Container(
+      width: 300,
+      child: ListView.builder(
         itemCount: peopleResponse.results!.length,
+        scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(peopleResponse.results![index].name!),
+          return Container(
+            margin: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
+                        width: 150,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 10,
+                      left: 10,
+                      child: Container(
+                        color: Colors.black54,
+                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                        child: Text(
+                          peopleResponse.results![index].name!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           );
-        });
-  }
+        },
+      ),
+    ),
+  );
+}
 }
