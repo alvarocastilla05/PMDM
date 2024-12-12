@@ -35,8 +35,11 @@ class _PeopleScreenState extends State<PeopleScreen> {
               if (snapshot.hasData) {
                 return Column(
                   children: [
-                    Text('Character List', style: TextStyle(color: Colors.yellow[600],fontFamily: 'StarJedi', fontSize: 20)),
-                    SizedBox(
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Text('Character List', style: TextStyle(color: Colors.yellow[600],fontFamily: 'StarJedi', fontSize: 20))),
+                    Container(
+                      margin: const EdgeInsets.only(top: 100),
                       width: double.infinity,
                       height: 300,
                       child: _buildPeopleList(snapshot.data!)),
@@ -66,7 +69,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
  Widget _buildPeopleList(PeopleResponse peopleResponse) {
   return Center(
     child: SizedBox(
-      width: 300,
+      width: 500,
       child: ListView.builder(
         itemCount: peopleResponse.results!.length,
         scrollDirection: Axis.horizontal,
@@ -78,24 +81,28 @@ class _PeopleScreenState extends State<PeopleScreen> {
                 Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(30),
                       child: Image.network(
                         'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
-                        width: 150,
+                        width: 200,
                       ),
                     ),
                     Positioned(
                       bottom: 10,
                       left: 10,
                       child: Container(
-                        color: Colors.black54,
+                        color: Colors.black.withOpacity(0.5),
                         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                        child: Text(
-                          peopleResponse.results![index].name!,
-                          style: TextStyle(
-                            color: Colors.yellow[600],
-                            fontSize: 12,
-                            fontFamily: 'StarJedi',
+                        child: SizedBox(
+                          width: 160,
+                          child: Text(
+                            peopleResponse.results![index].name!.toLowerCase(),
+                            style: TextStyle(
+                              color: Colors.yellow[600],
+                              fontSize: 20, 
+                              fontFamily: 'StarJedi',
+                            ),
+                           
                           ),
                         ),
                       ),
