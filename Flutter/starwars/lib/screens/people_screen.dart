@@ -33,17 +33,19 @@ class _PeopleScreenState extends State<PeopleScreen> {
             future: peopleResponse,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      child: Text('Character List', style: TextStyle(color: Colors.yellow[600],fontFamily: 'StarJedi', fontSize: 20))),
-                    Container(
-                      margin: const EdgeInsets.only(top: 100),
-                      width: double.infinity,
-                      height: 300,
-                      child: _buildPeopleList(snapshot.data!)),
-                  ],
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 20),
+                        child: Text('Character List', style: TextStyle(color: Colors.yellow[600],fontFamily: 'StarJedi', fontSize: 20))),
+                      Container(
+                        margin: const EdgeInsets.only(top: 100),
+                        width: double.infinity,
+                        height: 300,
+                        child: _buildPeopleList(snapshot.data!)),
+                    ],
+                  ),
                 );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
@@ -69,7 +71,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
  Widget _buildPeopleList(PeopleResponse peopleResponse) {
   return Center(
     child: SizedBox(
-      width: 500,
+      width: double.infinity,
       child: ListView.builder(
         itemCount: peopleResponse.results!.length,
         scrollDirection: Axis.horizontal,
